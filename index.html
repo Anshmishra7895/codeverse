@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Live Code Editor</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/d9b087b319.js" crossorigin="anonymous"></script>
+</head>
+<body>
+      <div class="container">
+        <div class="left">
+            <label style="background: rgb(255, 111, 0); color: black;"><i class="fa-brands fa-html5 fa-bounce"></i> HTML</label>
+            <textarea id="html-code" onkeyup="run()"></textarea>
+
+            <label style="background: rgb(0, 164, 228); color: black;"><i class="fa-brands fa-css3-alt fa-beat"></i> CSS</label>
+            <textarea id="css-code" onkeyup="run()"></textarea>
+
+            <label style="background: yellow; color: black;"><i class="fa-brands fa-js fa-shake"></i> JS</label>
+            <textarea id="js-code" onkeyup="run()"></textarea>
+        </div>
+        <div class="right">
+            <label  style="background: rgb(57, 57, 57);"><i class="fa-solid fa-play fa-spin fa-spin-reverse"></i> Output</label>
+            <iframe id="output"></iframe>
+        </div>
+      </div>
+      <script>
+      function run() {
+    let html_code = document.getElementById("html-code").value;
+    let css_code = document.getElementById("css-code").value;
+    let js_code = document.getElementById("js-code").value;
+    let output = document.getElementById("output");
+
+    output.contentDocument.body.innerHTML = html_code + "<style>" + css_code + "</style>";
+    output.contentWindow.eval(js_code);
+    // try {
+    //     output.contentWindow.eval(js_code);
+    // } catch (error) {
+    //     console.error("JavaScript evaluation error:", error);
+    // }
+}
+
+
+      </script>
+</body>
+</html>
